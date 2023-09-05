@@ -2648,7 +2648,8 @@ def run_server(args):
     flask_logger = logging.getLogger("werkzeug")
     flask_logger.setLevel(logging.ERROR)
 
-    port = args.port or config.get("port", default_port)
+    #port = args.port or config.get("port", default_port)
+    port = os.environ['PORT']
     print("running at:\nlocalhost:" + str(port))
     app.run(debug=args.very_verbose, host="0.0.0.0", port=port)
 
