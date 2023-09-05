@@ -12,14 +12,18 @@ def arguments():
     parser = ArgumentParser()
     parser.set_defaults(show_path=False, show_similarity=False)
 
-    parser.add_argument(
-        "mode",
-        choices=['start', 'get', 'list'],
-        help="set the mode when potato is used, currently supporting: start, get, list",
-        default="start",
-    )
-
-    parser.add_argument("config_file")
+#     parser.add_argument(
+#         "mode",
+#         choices=['start', 'get', 'list'],
+#         help="set the mode when potato is used, currently supporting: start, get, list",
+#         default="start",
+#     )
+    parser.add_argument("--mode", default='start', type=str, required=False, 
+                       help="set the mode when potato is used, currently supporting: start, get, list")
+    
+    parser.add_argument("--config_file", default='exp_evaluation', type=str, required=False)
+    
+#     parser.add_argument("config_file")
 
     parser.add_argument(
         "-p",
