@@ -23,7 +23,7 @@
     "annotation_codebook_url": "",
 
     "data_files": [
-       "data_files/exp_eval_select.json"
+       "data_files/test_examples.json"
     ],
 
     "item_properties": {
@@ -41,7 +41,7 @@
 
     #defining the ways annotators entering the annotation system
     "login": {
-      "type": 'url_direct',    #can be 'password' or 'url_direct'
+      "type": 'password',    #can be 'password' or 'url_direct'
       "url_argument": 'PROLIFIC_PID' # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
     },
 
@@ -79,8 +79,8 @@
       #whether do automatic task assignment for annotators, default False.
       "on": True,
       "output_filename": 'task_assignment.json',
-      "sampling_strategy": 'random',
-      "labels_per_instance": 3,
+      "sampling_strategy": 'ordered',
+      "labels_per_instance": 10,
       "instance_per_annotator": 10,
       "test_question_per_annotator": 1, # you must set up the test question in surveyflow to use this function
 
