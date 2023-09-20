@@ -59,7 +59,7 @@
       "pre_annotation": ['surveyflow/intro.jsonl', 'surveyflow/instruction.jsonl', 'surveyflow/consent.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
-      "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
+      "post_annotation": ['surveyflow/end.jsonl'],
       # If set, we will automatically generate testing questions similar to the annotation instances, but explicitly ask the annotator to choose one option
       "testing": ['surveyflow/testing.jsonl'],
     },
