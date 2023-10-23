@@ -23,7 +23,7 @@
     "annotation_codebook_url": "",
 
     "data_files": [
-       "data_files/test_examples.json"
+       "data_files/exp_eval_select.json"
     ],
 
     "item_properties": {
@@ -56,7 +56,7 @@
       "on": True,
       #"order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
       "order" : ['pre_annotation', 'post_annotation'],
-      "pre_annotation": ['surveyflow/intro.jsonl', 'surveyflow/instruction.jsonl', 'surveyflow/consent.jsonl'],
+      "pre_annotation": ['surveyflow/instruction.jsonl', 'surveyflow/consent.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
       "post_annotation": ['surveyflow/end.jsonl'],
@@ -154,7 +154,7 @@
             "name": "reason",
             "description": "What are the shortcomings of the explanation?",
             "labels": [
-               "does not make sense", "insufficient justification", "irrelevant to the task", "too trivial", "none",
+               "does not make sense", "insufficient justification", "irrelevant to the task", "too trivial", "none(only if the previous answer is Yes)",
             ],
 
             # If true, numbers [1-len(labels)] will be bound to each
