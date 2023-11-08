@@ -23,7 +23,7 @@
     "annotation_codebook_url": "",
 
     "data_files": [
-       "data_files/exp_eval_select.json"
+       "data_files/test_examples.json"
     ],
 
     "item_properties": {
@@ -79,8 +79,8 @@
       #whether do automatic task assignment for annotators, default False.
       "on": True,
       "output_filename": 'task_assignment.json',
-      "sampling_strategy": 'random',
-      "labels_per_instance": 10,
+      "sampling_strategy": 'ordered',
+      "labels_per_instance": 3,
       "instance_per_annotator": 10,
       "test_question_per_annotator": 1, # you must set up the test question in surveyflow to use this function
 
