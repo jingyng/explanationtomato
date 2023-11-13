@@ -2648,25 +2648,28 @@ def run_server(args):
     flask_logger = logging.getLogger("werkzeug")
     flask_logger.setLevel(logging.ERROR)
 
-    port = args.port or config.get("port", default_port)
+#     port = args.port or config.get("port", default_port)
+    port = os.environ['PORT']
+#     port=os.environ.get('PORT', 8000)
     print("running at:\nlocalhost:" + str(port))
     app.run(debug=args.very_verbose, host="0.0.0.0", port=port)
 
 
 def main():
-    if len(sys.argv) == 1:
-        # Run task configuration script if no arguments are given.
-        return run_create_task_cli()
+#     if len(sys.argv) == 1:
+#         # Run task configuration script if no arguments are given.
+#         return run_create_task_cli()
 
     args = arguments()
-    if args.mode == 'start':
-        run_server(args)
-    elif args.mode == 'get':
-        get_project_from_hub(args.config_file)
+    run_server(args)
+#     if args.mode == 'start':
+#         run_server(args)
+#     elif args.mode == 'get':
+#         get_project_from_hub(args.config_file)
 
-    # currently config_file is still an required arg, so when potato list is used, users must add all after it: potato list all
-    elif args.mode == 'list':
-        show_project_hub(args.config_file)
+#     # currently config_file is still an required arg, so when potato list is used, users must add all after it: potato list all
+#     elif args.mode == 'list':
+#         show_project_hub(args.config_file)
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@
     "annotation_codebook_url": "",
 
     "data_files": [
-       "data_files/exp_eval_select.json"
+       "data_files/test_examples.json"
     ],
 
     "item_properties": {
@@ -56,10 +56,10 @@
       "on": True,
       #"order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
       "order" : ['pre_annotation', 'post_annotation'],
-      "pre_annotation": ['surveyflow/intro.jsonl', 'surveyflow/instruction.jsonl', 'surveyflow/consent.jsonl'],
+      "pre_annotation": ['surveyflow/instruction.jsonl', 'surveyflow/consent.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
-      "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
+      "post_annotation": ['surveyflow/end.jsonl'],
       # If set, we will automatically generate testing questions similar to the annotation instances, but explicitly ask the annotator to choose one option
       "testing": ['surveyflow/testing.jsonl'],
     },
@@ -79,7 +79,7 @@
       #whether do automatic task assignment for annotators, default False.
       "on": True,
       "output_filename": 'task_assignment.json',
-      "sampling_strategy": 'random',
+      "sampling_strategy": 'ordered',
       "labels_per_instance": 3,
       "instance_per_annotator": 10,
       "test_question_per_annotator": 1, # you must set up the test question in surveyflow to use this function
@@ -92,22 +92,22 @@
 
     "annotation_schemes": [      
         {
-            "annotation_type": "radio",
-            "name": "answer",
-            "description": "What is the relationship between the Hypothesis and Premise?",
+            "annotation_type": "likert",
+            "name": "relationship",
+            "description": "Do you agree with the given Relationship between the Hypothesis and Premise?",
             "labels": [
                 {
-                  "name": "entailment",
-                  "tooltip": "There is enough evidence in the Premise to conclude that the Hypothesis is true.",
+                  "name": "Yes",
                   "key_value": '1'
                 },
-                { "name": "neutral",
-                  "tooltip": "The evidence in the Premiseis insufficient to draw a conclusion about the Hypothesis.",
+                { "name": "Weakly Yes",
                   "key_value": '2'
                 },
-                { "name": "contradiction",
-                  "tooltip": "There is enough evidence in the Premise to conclude that the Hypothesis is false.",
+                { "name": "Weakly No",
                   "key_value": '3'
+                },
+                { "name": "No",
+                  "key_value": '4'
                 }
             ],
             # If true, numbers [1-len(labels)] will be bound to each
@@ -119,7 +119,7 @@
         {
             "annotation_type": "likert",
             "name": "Does the explanation justify the answer?",
-            "description": "Given the Hypothesis and Premise, does the explanation justify the answer?",
+            "description": "Given the Hypothesis and Premise, does the Explanation justify the given Relationship?",
             "labels": [
                 {
                   "name": "Yes",
@@ -152,9 +152,9 @@
       {
             "annotation_type": "multiselect",
             "name": "reason",
-            "description": "What are the shortcomings of the explanation?",
+            "description": "What are the shortcomings of the Explanation? (you can select 1 or more options)",
             "labels": [
-               "does not make sense", "insufficient justification", "irrelevant to the task", "too trivial", "none",
+               "does not make sense", "insufficient justification", "irrelevant to the task", "too trivial", "none(only if the previous answer is Yes)",
             ],
 
             # If true, numbers [1-len(labels)] will be bound to each
